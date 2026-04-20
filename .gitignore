@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# dev screenshots / tooling artifacts
+/desktop-*.png
+/mobile-*.png
+/form-errors.png
+/.playwright-mcp/
