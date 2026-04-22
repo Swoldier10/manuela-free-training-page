@@ -15,11 +15,11 @@ export function WhatYouGet() {
         <Reveal>
           <div className="text-center">
             <div className="inline-flex items-center gap-2">
-              <Bolt className="w-4 text-gold-500" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
+              <Bolt className="glow-gold-sm w-4 text-gold-500" />
+              <span className="text-glow-gold-sm text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
                 Direct pe email
               </span>
-              <Bolt className="w-4 text-gold-500" />
+              <Bolt className="glow-gold-sm w-4 text-gold-500" />
             </div>
             <h2
               id="what-title"
@@ -73,10 +73,10 @@ function Card({ number, emoji, title, duration, lines }: CardProps) {
   return (
     <article className="group relative flex h-full flex-col border border-cream-50/10 bg-olive-900/40 p-7 transition-colors hover:border-gold-500/50 sm:p-8">
       <div className="flex items-baseline justify-between">
-        <span className="font-display text-[40px] leading-none text-gold-400 sm:text-[56px]">
+        <span className="text-glow-gold font-display text-[40px] leading-none text-gold-400 sm:text-[56px]">
           {number}
         </span>
-        <span className="inline-flex items-center gap-1.5 bg-gold-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-olive-950">
+        <span className="shadow-gold-sm inline-flex items-center gap-1.5 bg-gold-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-olive-950">
           {duration}
         </span>
       </div>

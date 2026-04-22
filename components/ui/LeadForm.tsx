@@ -113,7 +113,7 @@ export function LeadForm({
       {!compact && (
         <div className="text-center sm:text-left">
           <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.22em] text-gold-400">
-            Începe acum — gratuit
+            Începe acum · gratuit
           </p>
           <h3 className="font-display text-[26px] sm:text-[30px] leading-[1.1] text-cream-50">
             Trimite-mi antrenamentele

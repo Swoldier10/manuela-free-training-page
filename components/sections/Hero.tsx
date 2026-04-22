@@ -13,13 +13,13 @@ export function Hero() {
       <Tally className="pointer-events-none absolute right-10 top-24 hidden w-16 text-cream-50/25 sm:block" />
       <Tally className="pointer-events-none absolute left-6 top-[48%] hidden w-14 -rotate-12 text-cream-50/20 md:block" />
       <Tally className="pointer-events-none absolute bottom-24 right-8 hidden w-16 rotate-6 text-cream-50/20 md:block" />
-      <Bolt className="pointer-events-none absolute left-8 top-20 w-6 text-gold-500" />
-      <Bolt className="pointer-events-none absolute right-20 top-[40%] w-8 text-gold-500" />
-      <Bolt className="pointer-events-none absolute bottom-16 left-20 w-5 text-gold-500" />
+      <Bolt className="glow-gold pointer-events-none absolute left-8 top-20 w-6 text-gold-500" />
+      <Bolt className="glow-gold pointer-events-none absolute right-20 top-[40%] w-8 text-gold-500" />
+      <Bolt className="glow-gold-sm pointer-events-none absolute bottom-16 left-20 w-5 text-gold-500" />
 
       {/* Header */}
       <header className="relative z-10 mx-auto flex w-full max-w-2xl items-center gap-3 px-5 pt-6 sm:px-8">
-        <Logo size={36} priority className="ring-1 ring-cream-50/10" />
+        <Logo size={36} priority />
         <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cream-100/70">
           Manuela Vlașin · Calisthenics
         </p>
@@ -27,7 +27,7 @@ export function Hero() {
 
       {/* Poster composition */}
       <div className="relative z-10 mx-auto w-full max-w-2xl px-5 pb-16 pt-12 sm:px-8 sm:pb-24 sm:pt-16">
-        <span className="inline-flex items-center gap-2 bg-gold-500 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.28em] text-olive-950 sm:text-[11px]">
+        <span className="shadow-gold-sm inline-flex items-center gap-2 bg-gold-500 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.28em] text-olive-950 sm:text-[11px]">
           <Zap className="size-3.5 fill-current" aria-hidden="true" />
           Gratuit · 2 antrenamente
         </span>
@@ -35,14 +35,14 @@ export function Hero() {
         <h1 className="mt-8 font-display text-[44px] leading-[0.98] tracking-tight text-cream-50 sm:text-[64px] lg:text-[76px]">
           Abdomen plat.
           <br />
-          <span className="italic text-gold-400">Fesieri tonifiați.</span>
+          <span className="text-glow-gold font-accent text-gold-400">Fesieri tonifiați.</span>
           <br />
           În doar{" "}
           <span className="relative inline-block whitespace-nowrap">
             15 minute
             <Scribble
               aria-hidden="true"
-              className="absolute -bottom-2 left-0 h-3 w-full text-gold-500 sm:-bottom-3 sm:h-4"
+              className="glow-gold-sm absolute -bottom-2 left-0 h-3 w-full text-gold-500 sm:-bottom-3 sm:h-4"
             />
           </span>
           .
@@ -56,7 +56,7 @@ export function Hero() {
         <figure className="mt-10 sm:mt-12">
           <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-cream-50/15 bg-olive-900">
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
-              <span className="grid size-14 place-items-center rounded-full bg-gold-500 text-olive-950 shadow-[0_10px_30px_-10px_rgba(255,77,46,0.55)] sm:size-16">
+              <span className="grid size-14 place-items-center rounded-full bg-gold-500 text-olive-950 shadow-[0_10px_30px_-10px_rgba(168,131,37,0.5)] sm:size-16">
                 <Play className="size-5 fill-current sm:size-6" aria-hidden="true" />
               </span>
               <p className="text-[10px] font-bold uppercase tracking-[0.32em] text-cream-100/55 sm:text-[11px]">
@@ -68,18 +68,18 @@ export function Hero() {
 
         {/* Timer block */}
         <div className="mt-14 flex flex-col items-center sm:mt-20">
-          <p className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.4em] text-gold-400 sm:text-[11px]">
-            <Zap className="size-3 fill-current text-gold-500" aria-hidden="true" />
+          <p className="text-glow-gold-sm inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.4em] text-gold-400 sm:text-[11px]">
+            <Zap className="glow-gold-sm size-3 fill-current text-gold-500" aria-hidden="true" />
             Se închide în
-            <Zap className="size-3 fill-current text-gold-500" aria-hidden="true" />
+            <Zap className="glow-gold-sm size-3 fill-current text-gold-500" aria-hidden="true" />
           </p>
-          <CountdownTimer variant="hero" className="mt-5" />
+          <CountdownTimer className="mt-5" />
         </div>
 
         {/* Divider + form */}
         <div className="mt-20 flex items-center gap-4 sm:mt-24">
           <Dash aria-hidden="true" className="h-[2px] flex-1 text-cream-50/15" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400">
+          <span className="text-glow-gold-sm text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400">
             Primește acum
           </span>
           <Dash aria-hidden="true" className="h-[2px] flex-1 text-cream-50/15" />

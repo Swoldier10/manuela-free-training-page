@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Caveat, Inter, Playfair_Display } from "next/font/google";
+import { Caveat, Fraunces, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -22,6 +22,14 @@ const caveat = Caveat({
   subsets: ["latin", "latin-ext"],
   display: "swap",
   weight: ["500", "600", "700"],
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  weight: ["500", "600", "700"],
+  style: ["italic"],
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://manuelavlasin.ro";
@@ -78,7 +86,7 @@ export default function RootLayout({
   return (
     <html
       lang="ro"
-      className={`${inter.variable} ${playfair.variable} ${caveat.variable} antialiased`}
+      className={`${inter.variable} ${playfair.variable} ${caveat.variable} ${fraunces.variable} antialiased`}
     >
       <body className="min-h-screen bg-olive-950 text-cream-50 flex flex-col">
         {children}

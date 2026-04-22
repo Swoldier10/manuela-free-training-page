@@ -16,21 +16,21 @@ export function FinalCTA() {
         <Reveal>
           <div className="text-center">
             <div className="inline-flex items-center gap-2">
-              <Bolt className="w-4 text-gold-500" />
+              <Bolt className="glow-gold-sm w-4 text-gold-500" />
               <span className="text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
                 Final call
               </span>
-              <Bolt className="w-4 text-gold-500" />
+              <Bolt className="glow-gold-sm w-4 text-gold-500" />
             </div>
             <h2
               id="final-title"
               className="mt-4 font-display text-[34px] leading-[1.05] text-cream-50 sm:text-[50px]"
             >
-              Începe chiar <span className="italic text-gold-400">de azi</span>.
+              Începe chiar <span className="font-accent text-gold-400">de azi</span>.
             </h2>
             <p className="mt-4 inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.22em] text-cream-100/70 sm:text-[13px]">
               Vreau antrenamentele gratuite
-              <ArrowDown className="size-4 animate-pulse-soft text-gold-500" aria-hidden="true" />
+              <ArrowDown className="glow-gold-sm size-4 animate-pulse-soft text-gold-500" aria-hidden="true" />
             </p>
           </div>
         </Reveal>

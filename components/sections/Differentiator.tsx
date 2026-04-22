@@ -17,11 +17,11 @@ export function Differentiator() {
             className="font-display text-[32px] leading-[1.08] tracking-tight text-cream-50 sm:text-[46px]"
           >
             Nu sunt antrenamente{" "}
-            <span className="relative inline-block whitespace-nowrap italic text-gold-400">
+            <span className="text-glow-gold relative inline-block whitespace-nowrap font-accent text-gold-400">
               „random”
               <Scribble
                 aria-hidden="true"
-                className="absolute -bottom-1 left-0 h-2.5 w-full text-gold-500 sm:-bottom-1.5 sm:h-3"
+                className="glow-gold-sm absolute -bottom-1 left-0 h-2.5 w-full text-gold-500 sm:-bottom-1.5 sm:h-3"
               />
             </span>{" "}
             de pe internet.

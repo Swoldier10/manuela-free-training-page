@@ -14,13 +14,13 @@ export function About() {
 
       <div className="relative z-10 mx-auto grid max-w-5xl items-center gap-10 px-5 sm:px-8 md:grid-cols-[220px_1fr] md:gap-14 lg:grid-cols-[280px_1fr]">
         <Reveal>
-          <div className="mx-auto size-44 overflow-hidden rounded-full bg-olive-800 ring-1 ring-cream-50/10 sm:size-52 md:mx-0 md:size-full">
+          <div className="mx-auto size-44 sm:size-52 md:mx-0 md:size-full">
             <Image
               src="/logo-vm.png"
               alt="Manuela Vlașin"
               width={320}
               height={320}
-              className="h-full w-full object-contain p-3"
+              className="h-full w-full object-contain"
             />
           </div>
         </Reveal>
@@ -28,8 +28,8 @@ export function About() {
         <Reveal delay={0.1}>
           <div className="text-center md:text-left">
             <div className="inline-flex items-center gap-2">
-              <Bolt className="w-4 text-gold-500" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
+              <Bolt className="glow-gold-sm w-4 text-gold-500" />
+              <span className="text-glow-gold-sm text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
                 Despre mine
               </span>
             </div>
@@ -37,7 +37,7 @@ export function About() {
               id="about-title"
               className="mt-4 font-display text-[28px] leading-[1.1] text-cream-50 sm:text-[40px]"
             >
-              Sunt <span className="italic text-gold-400">Manuela</span>.
+              Sunt <span className="text-glow-gold font-accent text-gold-400">Manuela</span>.
             </h2>
             <div className="mx-auto mt-5 max-w-xl space-y-4 text-[16px] leading-[1.65] text-cream-100/85 sm:text-[17px] md:mx-0">
               <p>
@@ -50,9 +50,9 @@ export function About() {
               <p>
                 Am o bază solidă în{" "}
                 <em className="not-italic text-gold-300">calisthenics</em>, unde
-                controlul corpului este esențial — iar acest lucru se reflectă
-                în modul în care sunt construite antrenamentele mele: simple,
-                dar extrem de eficiente.
+                controlul corpului este esențial. Acest lucru se reflectă în
+                modul în care sunt construite antrenamentele mele: simple, dar
+                extrem de eficiente.
               </p>
             </div>
           </div>
