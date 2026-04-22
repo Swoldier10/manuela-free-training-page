@@ -54,7 +54,7 @@ export default function OpengraphImage() {
                 fontFamily: "system-ui, sans-serif",
               }}
             >
-              Antrenor · Calisthenics
+              Personal Trainer · Calisthenics
             </span>
           </div>
         </div>

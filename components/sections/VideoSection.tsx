@@ -4,7 +4,6 @@ import { Play } from "lucide-react";
 import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 
-// Placeholder — replace with the client's final video URL.
 const VIDEO_URL = "";
 
 export function VideoSection() {
@@ -13,11 +12,11 @@ export function VideoSection() {
   return (
     <section
       aria-labelledby="video-caption"
-      className="relative bg-olive-950 py-20 sm:py-28"
+      className="bg-olive-950 py-16 sm:py-24"
     >
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-4xl px-5 sm:px-8">
         <Reveal>
-          <div className="relative mx-auto aspect-video w-full overflow-hidden rounded-3xl border border-cream-50/10 bg-olive-800 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.8)]">
+          <div className="relative aspect-video w-full overflow-hidden border border-cream-50/10 bg-olive-900">
             {playing && VIDEO_URL ? (
               <video
                 src={VIDEO_URL}
@@ -31,40 +30,19 @@ export function VideoSection() {
                 type="button"
                 onClick={() => setPlaying(Boolean(VIDEO_URL))}
                 aria-label="Redă video demonstrativ"
-                className="group relative h-full w-full cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-400"
+                className="group grid h-full w-full place-items-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-400"
               >
-                {/* Gradient poster fallback */}
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-br from-olive-700 via-olive-900 to-olive-950"
-                />
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(184,153,104,0.18),transparent_60%)]"
-                />
-                <div className="shimmer absolute inset-0 opacity-40" aria-hidden="true" />
-
-                <div className="relative flex h-full w-full flex-col items-center justify-center gap-4 p-6 text-center">
-                  <span className="grid size-20 place-items-center rounded-full bg-gold-500 text-olive-950 shadow-[0_20px_60px_-15px_rgba(184,153,104,0.8)] transition-transform duration-300 group-hover:scale-110 sm:size-24">
-                    <Play className="size-8 fill-current sm:size-10" aria-hidden="true" />
-                  </span>
-                  <p className="font-display text-lg text-cream-50 sm:text-xl">
-                    Vezi antrenamentele în acțiune
-                  </p>
-                  <p className="max-w-xs text-xs text-cream-100/60 sm:text-sm">
-                    {VIDEO_URL
-                      ? "Apasă pentru redare"
-                      : "Video disponibil în curând"}
-                  </p>
-                </div>
+                <span className="grid size-16 place-items-center rounded-full bg-gold-500 text-cream-50 transition-transform duration-200 group-hover:scale-105 sm:size-20">
+                  <Play className="size-6 fill-current sm:size-8" aria-hidden="true" />
+                </span>
               </button>
             )}
           </div>
           <p
             id="video-caption"
-            className="mt-6 text-center text-sm text-cream-100/70 sm:text-base"
+            className="mt-5 text-center text-[14px] text-cream-100/60 sm:text-[15px]"
           >
-            Vezi exact cum arată antrenamentele și cum să le faci corect.
+            Vezi exact cum arată antrenamentele.
           </p>
         </Reveal>
       </div>

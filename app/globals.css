@@ -1,26 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  --color-olive-950: #0f0e09;
-  --color-olive-900: #1a1812;
-  --color-olive-800: #2a2820;
-  --color-olive-700: #3d3b2e;
-  --color-olive-600: #56543f;
-  --color-olive-500: #6f6c53;
+  /* Dark gym surfaces (token kept as "olive" for compat) */
+  --color-olive-950: #0a0a0a;
+  --color-olive-900: #141414;
+  --color-olive-800: #222222;
+  --color-olive-700: #363636;
+  --color-olive-600: #4f4f4f;
+  --color-olive-500: #707070;
 
-  --color-cream-50: #f7f3ea;
-  --color-cream-100: #ede6d3;
-  --color-cream-200: #dcd2b5;
-  --color-cream-300: #c4b894;
+  /* Off-white text tones (token kept as "cream" for compat) */
+  --color-cream-50: #f5f4ef;
+  --color-cream-100: #d4d4cf;
+  --color-cream-200: #a6a6a0;
+  --color-cream-300: #7a7a75;
 
-  --color-gold-600: #a08357;
-  --color-gold-500: #b89968;
-  --color-gold-400: #d4b988;
-  --color-gold-300: #e6d0a6;
+  /* Orange-red "heat" accent scale (token kept as "gold" for compat) */
+  --color-gold-600: #c4350f;
+  --color-gold-500: #ff4d2e;
+  --color-gold-400: #ff6a4d;
+  --color-gold-300: #ff9978;
 
   --font-display: var(--font-playfair), "Playfair Display", Georgia, serif;
   --font-sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
+  --font-script: var(--font-caveat), "Caveat", "Segoe Script",
+    "Bradley Hand", cursive;
 }
 
 :root {
@@ -29,21 +34,19 @@
   --foreground: var(--color-cream-50);
   --gradient-olive: linear-gradient(
     180deg,
-    #0f0e09 0%,
-    #1a1812 45%,
-    #2a2820 100%
+    #0a0a0a 0%,
+    #141414 100%
   );
   --gradient-olive-inverse: linear-gradient(
     180deg,
-    #2a2820 0%,
-    #1a1812 55%,
-    #0f0e09 100%
+    #141414 0%,
+    #0a0a0a 100%
   );
   --gradient-banner: linear-gradient(
     90deg,
-    #0f0e09 0%,
-    #2a2820 50%,
-    #0f0e09 100%
+    #0a0a0a 0%,
+    #1c1c1c 50%,
+    #0a0a0a 100%
   );
 }
 
@@ -75,7 +78,7 @@ body {
 
 ::selection {
   background: var(--color-gold-500);
-  color: var(--color-olive-950);
+  color: var(--color-cream-50);
 }
 
 *:focus-visible {
@@ -87,6 +90,11 @@ body {
 .font-display {
   font-family: var(--font-display);
   font-feature-settings: "lnum", "kern", "liga";
+}
+
+.font-script {
+  font-family: var(--font-script);
+  font-feature-settings: "kern", "liga";
 }
 
 .tabular {
@@ -160,9 +168,9 @@ body {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(212, 185, 136, 0.12) 40%,
-    rgba(212, 185, 136, 0.18) 50%,
-    rgba(212, 185, 136, 0.12) 60%,
+    rgba(255, 77, 46, 0.15) 40%,
+    rgba(255, 77, 46, 0.25) 50%,
+    rgba(255, 77, 46, 0.15) 60%,
     transparent 100%
   );
   background-size: 200% 100%;
