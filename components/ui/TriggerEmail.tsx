@@ -37,7 +37,7 @@ export function TriggerEmail({ plan }: Props) {
       /* private mode — proceed without dedup */
     }
 
-    sendThankYouEmail({ nume, email, plan }).then((result) => {
+    sendThankYouEmail({ nume, email }).then((result) => {
       if (!result.ok) {
         try {
           localStorage.removeItem(emailedKey(plan));

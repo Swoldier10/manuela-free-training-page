@@ -12,7 +12,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 There is no test runner configured in this repo. Don't fabricate one.
 
-`.env.local` must define `RESEND_API_KEY` for the subscribe endpoint to work; without it `getResend()` throws. `RESEND_FROM_EMAIL`, `RESEND_FROM_NAME`, `RESEND_NOTIFY_BCC`, and `NEXT_PUBLIC_SITE_URL` are all optional with sensible defaults.
+`.env.local` must define `LEAD_WEBHOOK_URL` (downstream lead-registration endpoint) and the two `PLAN_*_ID` opaque IDs; without them `env()` throws on first use. `NEXT_PUBLIC_SITE_URL` is optional with a sensible default.
 
 ## Versions worth knowing
 
@@ -24,17 +24,15 @@ There is no test runner configured in this repo. Don't fabricate one.
 
 ## Architecture
 
-Single-page Romanian-language lead-capture funnel. One route, one POST endpoint, one transactional email.
+Single-page Romanian-language lead-capture funnel. The app captures `{ nume, email }` and forwards it to a downstream lead-registration webhook; any follow-up email is the receiving service's job.
 
 **Page composition** — `app/page.tsx` stitches together fixed-order sections from `components/sections/`. The page is server-rendered; only pieces that need state (`LeadForm`, `Reveal`, `CountdownTimer`) are `"use client"`. Reordering the funnel = editing `page.tsx`.
 
-**Submission flow** — `LeadForm` (RHF + zod, client) → `POST /api/subscribe` → Resend. Both sides import the same `subscribeSchema` from `lib/schema.ts`, so validation rules and Romanian error messages stay in lockstep. Don't duplicate the schema.
+**Submission flow** — `LeadForm` (RHF + zod, client) collects `{ nume, email }`, stashes them in `sessionStorage`, and routes to `/offer-14-day`. Validation lives in `subscribeSchema` (`lib/schema.ts`); the form is the only consumer.
 
-**Subscribe route** (`app/api/subscribe/route.ts`, `runtime = "nodejs"`, `dynamic = "force-dynamic"`) does, in order: per-IP rate limit (5 req / 10 min via `lib/rateLimit.ts`) → JSON parse → zod parse → `resend.emails.send({ react: WelcomeEmail(...) })`. All user-facing error strings are Romanian — keep them that way.
+**Lead-registration trigger** — On mount of `/thank-you`, `components/ui/TriggerEmail.tsx` reads `nume`/`email` from `sessionStorage` and invokes the `sendThankYouEmail` server action (`app/thank-you/actions.ts`). The action: per-IP rate limit (5 req / 10 min via `lib/rateLimit.ts`) → `subscribeSchema` parse → `fetch(env().LEAD_WEBHOOK_URL, { POST, body: { name, email } })`. Status mapping: `201` → `{ ok: true }`; `422` → "deja înregistrat"; `429` → "prea multe încercări"; everything else → generic error. Per-plan localStorage dedup (`emailedKey(plan)`) prevents double-fires across refreshes. All user-facing error strings are Romanian — keep them that way.
 
 **Rate limiter caveat** — `lib/rateLimit.ts` is an in-memory `Map`. It resets on every cold start and does not span instances. Fine for a single long-lived Node server; a serverless deployment that scales horizontally needs a shared store (Redis/Upstash) before this is meaningful protection.
-
-**Email template** — `lib/emailTemplate.tsx` is a `@react-email/components` tree rendered server-side and passed to Resend via the `react` field. Email clients ignore Tailwind/external CSS, so all styling is inline `style={...}` with hard-coded hex constants — these intentionally duplicate the brand palette and should be edited together with `globals.css` if colors shift. The two workout links currently point at `https://example.com/...` placeholders.
 
 **Styling** — Tailwind v4 with **no `tailwind.config.*` file**. Design tokens (olive/cream/gold scales, font families) live in `app/globals.css` under `@theme { ... }`; that's where new color/font tokens go. Token names retain `olive`/`cream` for compatibility but the actual palette is dark-gym (near-black surfaces, off-white text, gold accent). Custom utilities (`.shadow-gold`, `.glow-gold`, `.texture-grain`, `.shimmer`, etc.) are also defined there.
 
