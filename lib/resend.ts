@@ -5,17 +5,19 @@ let client: Resend | null = null;
 
 export function getResend(): Resend {
   if (!client) {
-    client = new Resend(env.RESEND_API_KEY);
+    client = new Resend(env().RESEND_API_KEY);
   }
   return client;
 }
 
 export function fromAddress(): string {
-  return `${env.RESEND_FROM_NAME} <${env.RESEND_FROM_EMAIL}>`;
+  const e = env();
+  return `${e.RESEND_FROM_NAME} <${e.RESEND_FROM_EMAIL}>`;
 }
 
 export function bccList(): string[] {
-  return env.RESEND_NOTIFY_BCC.split(",")
+  return env()
+    .RESEND_NOTIFY_BCC.split(",")
     .map((s) => s.trim())
     .filter(Boolean);
 }

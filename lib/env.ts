@@ -1,8 +1,12 @@
 // Server-only env validation. Imported transitively from any server module
-// that reads `process.env`. Throws at first import if a required key is
-// missing or malformed — the app refuses to boot rather than failing
-// silently per-request later. Never prefix any of these with NEXT_PUBLIC_;
-// the only public var stays addressed via `process.env.NEXT_PUBLIC_SITE_URL`.
+// that reads `process.env`. Validation runs lazily on first call to `env()`
+// — *not* at module-load — so `next build` can collect page data without
+// having every required key set in the build environment. The first
+// request that actually needs an env var (`getResend()`, `plan14Url()`,
+// `resolvePlan()`, etc.) will throw with the offending keys named.
+//
+// Never prefix any of these with NEXT_PUBLIC_; the only public var stays
+// addressed via `process.env.NEXT_PUBLIC_SITE_URL`.
 
 import { z } from "zod";
 
@@ -17,15 +21,21 @@ const schema = z.object({
   PLAN_7_ID: z.string().min(8, "PLAN_7_ID must be a non-trivial opaque ID."),
 });
 
-const parsed = schema.safeParse(process.env);
+type Env = z.infer<typeof schema>;
 
-if (!parsed.success) {
-  const issues = parsed.error.issues
-    .map((i) => `  · ${i.path.join(".")}: ${i.message}`)
-    .join("\n");
-  throw new Error(
-    `Invalid server env. Add the missing/invalid keys to .env.local:\n${issues}`,
-  );
+let cached: Env | undefined;
+
+export function env(): Env {
+  if (cached) return cached;
+  const parsed = schema.safeParse(process.env);
+  if (!parsed.success) {
+    const issues = parsed.error.issues
+      .map((i) => `  · ${i.path.join(".")}: ${i.message}`)
+      .join("\n");
+    throw new Error(
+      `Invalid server env. Add the missing/invalid keys to .env.local (or to your hosting provider):\n${issues}`,
+    );
+  }
+  cached = parsed.data;
+  return cached;
 }
-
-export const env = parsed.data;
