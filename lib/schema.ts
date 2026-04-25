@@ -14,3 +14,9 @@ export const subscribeSchema = z.object({
 });
 
 export type SubscribeInput = z.infer<typeof subscribeSchema>;
+
+export const sendSchema = subscribeSchema.extend({
+  plan: z.enum(["14-day", "7-day"]).nullable(),
+});
+
+export type SendInput = z.infer<typeof sendSchema>;

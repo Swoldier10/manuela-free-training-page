@@ -10,7 +10,7 @@ type Props = {
 export function Logo({ size = 56, className, priority }: Props) {
   return (
     <Image
-      src="/logo-vm.png"
+      src="/images/logo-vm.png"
       alt="Manuela Vlașin"
       width={size}
       height={size}

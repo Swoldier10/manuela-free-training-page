@@ -9,8 +9,13 @@ import {
   Section,
   Text,
 } from "@react-email/components";
+import type { Plan } from "@/lib/plans";
 
-type Props = { nume: string };
+type Props = {
+  nume: string;
+  plan?: Plan | null;
+  siteUrl?: string;
+};
 
 const OLIVE_950 = "#0f0e09";
 const OLIVE_900 = "#1a1812";
@@ -20,13 +25,15 @@ const CREAM_70 = "rgba(247,243,234,0.78)";
 const GOLD_500 = "#b89968";
 const GOLD_400 = "#d4b988";
 
-export function WelcomeEmail({ nume }: Props) {
+export function WelcomeEmail({ nume, plan = null, siteUrl = "" }: Props) {
+  const previewText = plan
+    ? `Bine ai venit, ${nume}! Antrenamentele și planul de nutriție sunt aici.`
+    : `Bine ai venit, ${nume}! Ai aici cele 2 antrenamente gratuite.`;
+
   return (
     <Html lang="ro">
       <Head />
-      <Preview>
-        {`Bine ai venit, ${nume}! Ai aici cele 2 antrenamente gratuite.`}
-      </Preview>
+      <Preview>{previewText}</Preview>
       <Body
         style={{
           backgroundColor: OLIVE_950,
@@ -109,7 +116,7 @@ export function WelcomeEmail({ nume }: Props) {
             </Text>
           </Section>
 
-          <WorkoutBlock
+          <ResourceBlock
             emoji="🔥"
             title="Antrenament ABDOMEN"
             duration="15 min · Lower abs + core stabil"
@@ -118,7 +125,7 @@ export function WelcomeEmail({ nume }: Props) {
             cta="Deschide antrenamentul Abdomen"
           />
 
-          <WorkoutBlock
+          <ResourceBlock
             emoji="🍑"
             title="Antrenament FESIERI"
             duration="15 min · Activare + tonifiere"
@@ -126,6 +133,28 @@ export function WelcomeEmail({ nume }: Props) {
             href="https://example.com/antrenament-fesieri"
             cta="Deschide antrenamentul Fesieri"
           />
+
+          {plan === "14-day" ? (
+            <ResourceBlock
+              emoji="🥗"
+              title="Plan nutriție 14 zile"
+              duration="Plan complet · Idei de mese"
+              description="Două săptămâni de structură simplă, gândită să susțină antrenamentele tale."
+              href={`${siteUrl}/docs/plan-nutritie-14-zile.pdf`}
+              cta="Descarcă planul de 14 zile"
+            />
+          ) : null}
+
+          {plan === "7-day" ? (
+            <ResourceBlock
+              emoji="🥗"
+              title="Plan nutriție 7 zile"
+              duration="Plan de start · Idei de mese"
+              description="O săptămână de structură simplă, perfectă dacă vrei să testezi fără să te complici."
+              href={`${siteUrl}/docs/plan-nutritie-7-zile.pdf`}
+              cta="Descarcă planul de 7 zile"
+            />
+          ) : null}
 
           <Hr
             style={{
@@ -176,7 +205,7 @@ export function WelcomeEmail({ nume }: Props) {
   );
 }
 
-function WorkoutBlock({
+function ResourceBlock({
   emoji,
   title,
   duration,

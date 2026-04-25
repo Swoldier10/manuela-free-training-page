@@ -16,7 +16,7 @@ export function About() {
         <Reveal>
           <div className="mx-auto size-44 sm:size-52 md:mx-0 md:size-full">
             <Image
-              src="/logo-vm.png"
+              src="/images/logo-vm.png"
               alt="Manuela Vlașin"
               width={320}
               height={320}

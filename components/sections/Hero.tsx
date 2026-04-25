@@ -1,8 +1,9 @@
-import { Play, Zap } from "lucide-react";
+import { Zap } from "lucide-react";
 import { CountdownTimer } from "@/components/ui/CountdownTimer";
 import { Bolt, Dash, Scribble, Stripes, Tally } from "@/components/ui/Decor";
 import { LeadForm } from "@/components/ui/LeadForm";
 import { Logo } from "@/components/ui/Logo";
+import { VideoPlayer } from "@/components/ui/VideoPlayer";
 
 export function Hero() {
   return (
@@ -52,18 +53,11 @@ export function Hero() {
           Fără echipament. Fără sală. Simți diferența din primul minut.
         </p>
 
-        {/* Video placeholder */}
         <figure className="mt-10 sm:mt-12">
-          <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-cream-50/15 bg-olive-900">
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
-              <span className="grid size-14 place-items-center rounded-full bg-gold-500 text-olive-950 shadow-[0_10px_30px_-10px_rgba(168,131,37,0.5)] sm:size-16">
-                <Play className="size-5 fill-current sm:size-6" aria-hidden="true" />
-              </span>
-              <p className="text-[10px] font-bold uppercase tracking-[0.32em] text-cream-100/55 sm:text-[11px]">
-                Video în curând
-              </p>
-            </div>
-          </div>
+          <VideoPlayer
+            src="/videos/intro.mp4"
+            poster="/images/video-poster.jpg"
+          />
         </figure>
 
         {/* Timer block */}
