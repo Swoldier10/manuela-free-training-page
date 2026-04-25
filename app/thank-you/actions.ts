@@ -2,8 +2,9 @@
 
 import { headers } from "next/headers";
 import { env } from "@/lib/env";
+import type { Plan } from "@/lib/plans";
 import { rateLimit } from "@/lib/rateLimit";
-import { subscribeSchema } from "@/lib/schema";
+import { sendSchema } from "@/lib/schema";
 
 type Result = { ok: true } | { ok: false; error: string };
 
@@ -14,11 +15,18 @@ async function clientIp(): Promise<string> {
   return h.get("x-real-ip") ?? "anonymous";
 }
 
+function dietaryPlan(plan: Plan | null): "14-days" | "7-days" | "none" {
+  if (plan === "14-day") return "14-days";
+  if (plan === "7-day") return "7-days";
+  return "none";
+}
+
 export async function sendThankYouEmail(input: {
   nume: string;
   email: string;
+  plan: Plan | null;
 }): Promise<Result> {
-  const parsed = subscribeSchema.safeParse(input);
+  const parsed = sendSchema.safeParse(input);
   if (!parsed.success) {
     return { ok: false, error: "Date invalide." };
   }
@@ -33,7 +41,7 @@ export async function sendThankYouEmail(input: {
     };
   }
 
-  const { nume, email } = parsed.data;
+  const { nume, email, plan } = parsed.data;
 
   try {
     const res = await fetch(env().LEAD_WEBHOOK_URL, {
@@ -42,7 +50,11 @@ export async function sendThankYouEmail(input: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify({ name: nume, email }),
+      body: JSON.stringify({
+        name: nume,
+        email,
+        dietary_plan: dietaryPlan(plan),
+      }),
       cache: "no-store",
     });
 
