@@ -58,7 +58,10 @@ export async function sendThankYouEmail(input: {
       cache: "no-store",
     });
 
-    if (res.status === 201) return { ok: true };
+    if (res.status === 201) {
+      console.log("[register-lead] ok", { dietary_plan: dietaryPlan(plan) });
+      return { ok: true };
+    }
 
     if (res.status === 422) {
       return { ok: false, error: "Acest email pare deja înregistrat." };
