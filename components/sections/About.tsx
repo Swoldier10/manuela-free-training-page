@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
-import { Bolt, Tally } from "@/components/ui/Decor";
+import { Tally } from "@/components/ui/Decor";
 
 export function About() {
   return (
@@ -14,25 +14,22 @@ export function About() {
 
       <div className="relative z-10 mx-auto grid max-w-5xl items-center gap-10 px-5 sm:px-8 md:grid-cols-[220px_1fr] md:gap-14 lg:grid-cols-[280px_1fr]">
         <Reveal>
-          <div className="mx-auto size-44 sm:size-52 md:mx-0 md:size-full">
+          <div className="mx-auto aspect-square w-44 overflow-hidden rounded-full border border-cream-50/15 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] sm:w-52 md:mx-0 md:w-full md:max-w-[280px]">
             <Image
-              src="/images/logo-vm.png"
+              src="/images/manuela-portrait.jpg"
               alt="Manuela Vlașin"
-              width={320}
-              height={320}
-              className="h-full w-full object-contain"
+              width={560}
+              height={560}
+              className="h-full w-full object-cover"
             />
           </div>
         </Reveal>
 
         <Reveal delay={0.1}>
           <div className="text-center md:text-left">
-            <div className="inline-flex items-center gap-2">
-              <Bolt className="glow-gold-sm w-4 text-gold-500" />
-              <span className="text-glow-gold-sm text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
-                Despre mine
-              </span>
-            </div>
+            <span className="text-glow-gold-sm inline-block text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
+              Despre mine
+            </span>
             <h2
               id="about-title"
               className="mt-4 font-display text-[28px] leading-[1.1] text-cream-50 sm:text-[40px]"

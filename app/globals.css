@@ -24,7 +24,7 @@
   --font-display: var(--font-playfair), "Playfair Display", Georgia, serif;
   --font-sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  --font-script: var(--font-caveat), "Caveat", "Segoe Script",
+  --font-script: var(--font-sacramento), "Sacramento", "Segoe Script",
     "Bradley Hand", cursive;
   --font-accent: var(--font-fraunces), "Fraunces", "Playfair Display",
     Georgia, serif;
@@ -76,6 +76,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "ss01", "cv11";
+  zoom: 1.15;
 }
 
 ::selection {

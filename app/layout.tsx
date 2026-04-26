@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Caveat, Fraunces, Inter, Playfair_Display } from "next/font/google";
+import { Fraunces, Inter, Playfair_Display, Sacramento } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -17,11 +17,11 @@ const playfair = Playfair_Display({
   style: ["normal", "italic"],
 });
 
-const caveat = Caveat({
-  variable: "--font-caveat",
+const sacramento = Sacramento({
+  variable: "--font-sacramento",
   subsets: ["latin", "latin-ext"],
   display: "swap",
-  weight: ["500", "600", "700"],
+  weight: ["400"],
 });
 
 const fraunces = Fraunces({
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     template: "%s · Manuela Vlașin",
   },
   description:
-    "Abdomen mai plat și fesieri mai tonifiați în doar 15 minute, de acasă. 2 antrenamente gratuite, fără echipament, simple și eficiente.",
+    "Abdomen mai plat și fesieri mai tonifiați în doar 20 minute, de acasă. 2 antrenamente gratuite, fără echipament, simple și eficiente.",
   keywords: [
     "antrenamente gratuite",
     "abdomen plat",
@@ -59,14 +59,14 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: "Manuela Vlașin",
     title:
-      "Abdomen mai plat și fesieri mai tonifiați în 15 minute — gratuit",
+      "Abdomen mai plat și fesieri mai tonifiați în 20 minute — gratuit",
     description:
       "2 antrenamente gratuite, fără echipament. Simple, eficiente, făcute pentru femei care vor rezultate reale.",
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "Abdomen mai plat și fesieri mai tonifiați în 15 minute — gratuit",
+      "Abdomen mai plat și fesieri mai tonifiați în 20 minute — gratuit",
     description:
       "2 antrenamente gratuite, fără echipament. Simple, eficiente, făcute pentru femei care vor rezultate reale.",
   },
@@ -86,7 +86,7 @@ export default function RootLayout({
   return (
     <html
       lang="ro"
-      className={`${inter.variable} ${playfair.variable} ${caveat.variable} ${fraunces.variable} antialiased`}
+      className={`${inter.variable} ${playfair.variable} ${sacramento.variable} ${fraunces.variable} antialiased`}
     >
       <body className="min-h-screen bg-olive-950 text-cream-50 flex flex-col">
         {children}

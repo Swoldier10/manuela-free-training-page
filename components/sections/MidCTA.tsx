@@ -1,20 +1,15 @@
 import Link from "next/link";
 import { ArrowDown } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
-import { Bolt } from "@/components/ui/Decor";
 
 export function MidCTA() {
   return (
     <section className="bg-olive-950 py-16 sm:py-20">
       <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
         <Reveal>
-          <div className="inline-flex items-center gap-2">
-            <Bolt className="glow-gold-sm w-4 text-gold-500" />
-            <span className="text-glow-gold-sm text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
-              Treci la treabă
-            </span>
-            <Bolt className="glow-gold-sm w-4 text-gold-500" />
-          </div>
+          <span className="text-glow-gold-sm inline-block text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
+            Treci la treabă
+          </span>
           <p className="mt-5 font-display text-[26px] leading-snug text-cream-50 sm:text-[32px]">
             Gata să simți diferența încă de la primul antrenament?
           </p>

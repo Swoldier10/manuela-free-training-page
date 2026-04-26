@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { CtaButton } from "@/components/ui/CtaButton";
-import { Bolt, Stripes, Tally } from "@/components/ui/Decor";
+import { Stripes, Tally } from "@/components/ui/Decor";
 import { Greeting } from "@/components/ui/Greeting";
 import { Logo } from "@/components/ui/Logo";
 import { Reveal } from "@/components/motion/Reveal";
@@ -33,9 +33,9 @@ export default function Offer7DayPage() {
       <Tally className="pointer-events-none absolute bottom-32 left-10 hidden w-14 -rotate-6 text-cream-50/15 md:block" />
 
       <header className="relative z-10 mx-auto flex w-full max-w-5xl items-center gap-3 px-5 sm:px-8">
-        <Logo size={36} priority />
+        <Logo size={64} priority />
         <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cream-100/70">
-          Manuela Vlașin · Calisthenics
+          Manuela Vlașin · Personal Trainer
         </p>
       </header>
 
@@ -43,13 +43,9 @@ export default function Offer7DayPage() {
         <div className="grid w-full gap-8 lg:grid-cols-[340px_1fr] lg:items-center lg:gap-12">
           <Reveal className="text-center lg:col-start-2 lg:row-start-1 lg:text-left">
             <Greeting />
-            <div className="inline-flex items-center gap-2">
-              <Bolt className="glow-gold-sm w-4 text-gold-500" />
-              <span className="text-glow-gold-sm text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
-                Încearcă mai întâi
-              </span>
-              <Bolt className="glow-gold-sm w-4 text-gold-500" />
-            </div>
+            <span className="text-glow-gold-sm inline-block text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
+              Încearcă mai întâi
+            </span>
             <h1
               id="offer-7-title"
               className="mt-3 font-display text-[28px] leading-[1.05] text-cream-50 sm:text-[40px] lg:text-[40px]"

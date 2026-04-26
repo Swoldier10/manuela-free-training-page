@@ -85,7 +85,7 @@ export default function OpengraphImage() {
             <span style={{ color: "#d4b988", fontStyle: "italic" }}>
               fesieri mai tonifiați
             </span>{" "}
-            în 15 minute.
+            în 20 minute.
           </div>
           <div
             style={{

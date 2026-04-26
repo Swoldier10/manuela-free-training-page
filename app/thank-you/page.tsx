@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Bolt } from "@/components/ui/Decor";
 import { Greeting } from "@/components/ui/Greeting";
 import { Logo } from "@/components/ui/Logo";
 import { TriggerEmail } from "@/components/ui/TriggerEmail";
@@ -30,22 +29,18 @@ export default async function ThankYouPage({
     <section className="relative flex min-h-screen flex-col overflow-hidden bg-olive-950 py-6 sm:py-8 lg:py-6">
       <TriggerEmail plan={plan} />
       <header className="relative z-10 mx-auto flex w-full max-w-xl items-center gap-3 px-5 sm:px-8">
-        <Logo size={36} />
+        <Logo size={64} />
         <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cream-100/70">
-          Manuela Vlașin · Calisthenics
+          Manuela Vlașin · Personal Trainer
         </p>
       </header>
 
       <div className="relative z-10 mx-auto flex w-full max-w-xl flex-1 flex-col items-center justify-center px-5 py-10 text-center sm:px-8 sm:py-12">
         <Reveal>
           <Greeting />
-          <div className="inline-flex items-center gap-2">
-            <Bolt className="glow-gold-sm w-4 text-gold-500" />
-            <span className="text-glow-gold-sm text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
-              Mulțumesc
-            </span>
-            <Bolt className="glow-gold-sm w-4 text-gold-500" />
-          </div>
+          <span className="text-glow-gold-sm inline-block text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
+            Mulțumesc
+          </span>
           <CaseBody plan={plan} />
         </Reveal>
 

@@ -1,7 +1,7 @@
 import { ArrowDown } from "lucide-react";
 import { LeadForm } from "@/components/ui/LeadForm";
 import { Reveal } from "@/components/motion/Reveal";
-import { Bolt, Stripes } from "@/components/ui/Decor";
+import { Stripes } from "@/components/ui/Decor";
 
 export function FinalCTA() {
   return (
@@ -15,13 +15,9 @@ export function FinalCTA() {
       <div className="relative z-10 mx-auto max-w-xl px-5 sm:px-8">
         <Reveal>
           <div className="text-center">
-            <div className="inline-flex items-center gap-2">
-              <Bolt className="glow-gold-sm w-4 text-gold-500" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
-                Final call
-              </span>
-              <Bolt className="glow-gold-sm w-4 text-gold-500" />
-            </div>
+            <span className="inline-block text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
+              Final call
+            </span>
             <h2
               id="final-title"
               className="mt-4 font-display text-[34px] leading-[1.05] text-cream-50 sm:text-[50px]"

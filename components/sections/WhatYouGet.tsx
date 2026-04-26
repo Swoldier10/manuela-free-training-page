@@ -1,5 +1,5 @@
 import { Reveal } from "@/components/motion/Reveal";
-import { Bolt, Tally } from "@/components/ui/Decor";
+import { Tally } from "@/components/ui/Decor";
 
 export function WhatYouGet() {
   return (
@@ -14,13 +14,9 @@ export function WhatYouGet() {
       <div className="relative z-10 mx-auto max-w-5xl px-5 sm:px-8">
         <Reveal>
           <div className="text-center">
-            <div className="inline-flex items-center gap-2">
-              <Bolt className="glow-gold-sm w-4 text-gold-500" />
-              <span className="text-glow-gold-sm text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
-                Direct pe email
-              </span>
-              <Bolt className="glow-gold-sm w-4 text-gold-500" />
-            </div>
+            <span className="text-glow-gold-sm inline-block text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
+              Direct pe email
+            </span>
             <h2
               id="what-title"
               className="mt-4 font-display text-[30px] leading-[1.08] text-cream-50 sm:text-[42px]"
@@ -36,7 +32,7 @@ export function WhatYouGet() {
               number="01"
               emoji="🔥"
               title="Antrenament ABDOMEN"
-              duration="15 min"
+              duration="20 min"
               lines={[
                 "Focus pe lower abs + core stabil.",
                 "Fără mișcări inutile sau complicate.",
@@ -48,7 +44,7 @@ export function WhatYouGet() {
               number="02"
               emoji="🍑"
               title="Antrenament FESIERI"
-              duration="15 min"
+              duration="20 min"
               lines={[
                 "Activare + tonifiere reală.",
                 "Fără să îți suprasoliciți spatele.",

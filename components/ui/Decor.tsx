@@ -35,19 +35,6 @@ export function Tally({ className }: { className?: string }) {
   );
 }
 
-export function Bolt({ className }: { className?: string }) {
-  return (
-    <svg
-      aria-hidden="true"
-      className={className}
-      viewBox="0 0 24 32"
-      fill="currentColor"
-    >
-      <path d="M14 1 L2 17 L10 17 L8 31 L22 13 L14 13 Z" />
-    </svg>
-  );
-}
-
 export function Scribble({ className, ...rest }: SVGProps<SVGSVGElement>) {
   return (
     <svg
