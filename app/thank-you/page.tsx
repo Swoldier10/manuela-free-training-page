@@ -35,7 +35,7 @@ export default async function ThankYouPage({
         </p>
       </header>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-xl flex-1 flex-col items-center justify-center px-5 py-10 text-center sm:px-8 sm:py-12">
+      <div className="relative z-10 mx-auto flex w-full max-w-xl flex-col items-center px-5 pt-12 pb-10 text-center sm:px-8 sm:pt-16 sm:pb-12">
         <Reveal>
           <Greeting />
           <span className="text-glow-gold-sm inline-block text-[10px] font-bold uppercase tracking-[0.32em] text-gold-400 sm:text-[11px]">
