@@ -7,7 +7,7 @@ import { Stripes, Tally } from "@/components/ui/Decor";
 import { Greeting } from "@/components/ui/Greeting";
 import { Logo } from "@/components/ui/Logo";
 import { Reveal } from "@/components/motion/Reveal";
-import { plan7Url } from "@/lib/plans";
+import { PLAN_7_CHECKOUT_URL } from "@/lib/plans";
 
 export const metadata: Metadata = {
   title: "Plan nutriție 7 zile · Manuela Vlașin",
@@ -119,16 +119,14 @@ export default function Offer7DayPage() {
 
           <Reveal delay={0.2} className="lg:col-start-2 lg:row-start-5">
             <div className="flex flex-col items-center lg:items-start">
-              {/* TODO: replace href with the Stripe Payment Link for the 7-day plan.
-                  Configure that link's success URL to https://<domain>/thank-you?p=$PLAN_7_ID. */}
-              <Link href={plan7Url()} className="block w-full sm:w-auto">
+              <a href={PLAN_7_CHECKOUT_URL} className="block w-full sm:w-auto">
                 <CtaButton variant="primary" size="lg" className="w-full sm:w-auto">
                   <span className="flex items-center gap-2">
                     Da, vreau planul de 7 zile
                     <ArrowRight className="size-4" aria-hidden="true" />
                   </span>
                 </CtaButton>
-              </Link>
+              </a>
               <Link
                 href="/thank-you"
                 className="mt-4 inline-block max-w-xs text-center text-[11px] font-medium uppercase tracking-[0.18em] text-cream-100/55 underline underline-offset-4 transition-colors hover:text-gold-400 sm:text-[12px] lg:max-w-none lg:text-left"

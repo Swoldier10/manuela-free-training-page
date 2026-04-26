@@ -21,3 +21,10 @@ export function plan14Url(): string {
 export function plan7Url(): string {
   return `/thank-you?p=${env().PLAN_7_ID}`;
 }
+
+// Stripe Payment Links. Each link's success URL must be configured in the
+// Stripe dashboard to point at the matching `/thank-you?p=$PLAN_*_ID`.
+export const PLAN_14_CHECKOUT_URL =
+  "https://buy.stripe.com/8x28wP8I47fYeBGdz95EY02";
+export const PLAN_7_CHECKOUT_URL =
+  "https://buy.stripe.com/9B614n7E057Qalq2Uv5EY03";
