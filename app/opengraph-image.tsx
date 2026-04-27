@@ -74,6 +74,8 @@ export default function OpengraphImage() {
           </div>
           <div
             style={{
+              display: "flex",
+              flexWrap: "wrap",
               fontSize: 76,
               lineHeight: 1.05,
               color: "#f7f3ea",
@@ -81,11 +83,11 @@ export default function OpengraphImage() {
               maxWidth: 980,
             }}
           >
-            Abdomen mai plat și{" "}
+            <span>Abdomen mai plat și&nbsp;</span>
             <span style={{ color: "#d4b988", fontStyle: "italic" }}>
               fesieri mai tonifiați
-            </span>{" "}
-            în 20 minute.
+            </span>
+            <span>&nbsp;în 20 minute.</span>
           </div>
           <div
             style={{
