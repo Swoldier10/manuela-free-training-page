@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { updateLeadPlan } from "@/app/actions/leads";
 import type { Plan } from "@/lib/plans";
-import { STORAGE_KEYS } from "@/lib/storage";
+import { getLeadCache } from "@/lib/storage";
 
 type Props = { plan: Plan | null };
 
@@ -14,22 +14,16 @@ export function TriggerPlanUpdate({ plan }: Props) {
     if (fired.current) return;
     fired.current = true;
 
-    let nume: string | null = null;
-    let email: string | null = null;
-    try {
-      nume = sessionStorage.getItem(STORAGE_KEYS.nume);
-      email = sessionStorage.getItem(STORAGE_KEYS.email);
-    } catch {
-      return;
-    }
+    const cached = getLeadCache();
+    if (!cached) return;
 
-    if (!nume || !email) return;
-
-    updateLeadPlan({ nume, email, plan }).then((result) => {
-      if (!result.ok) {
-        console.warn("[TriggerPlanUpdate] update failed:", result.error);
-      }
-    });
+    updateLeadPlan({ nume: cached.nume, email: cached.email, plan }).then(
+      (result) => {
+        if (!result.ok) {
+          console.warn("[TriggerPlanUpdate] update failed:", result.error);
+        }
+      },
+    );
   }, [plan]);
 
   return null;

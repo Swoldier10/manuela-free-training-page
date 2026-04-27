@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { STORAGE_KEYS } from "@/lib/storage";
+import { getLeadCache } from "@/lib/storage";
 
 function subscribe(callback: () => void) {
   window.addEventListener("storage", callback);
@@ -9,14 +9,10 @@ function subscribe(callback: () => void) {
 }
 
 function getSnapshot(): string | null {
-  try {
-    const value = sessionStorage.getItem(STORAGE_KEYS.nume);
-    if (!value) return null;
-    const trimmed = value.trim().slice(0, 60);
-    return trimmed.length > 0 ? trimmed : null;
-  } catch {
-    return null;
-  }
+  const cached = getLeadCache();
+  if (!cached) return null;
+  const trimmed = cached.nume.trim().slice(0, 60);
+  return trimmed.length > 0 ? trimmed : null;
 }
 
 function getServerSnapshot(): string | null {

@@ -7,7 +7,7 @@ import { forwardRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { registerLead } from "@/app/actions/leads";
 import { subscribeSchema, type SubscribeInput } from "@/lib/schema";
-import { STORAGE_KEYS } from "@/lib/storage";
+import { setLeadCache } from "@/lib/storage";
 import { cn } from "@/lib/utils";
 import { CtaButton } from "./CtaButton";
 
@@ -52,12 +52,7 @@ export function LeadForm({
       return;
     }
 
-    try {
-      sessionStorage.setItem(STORAGE_KEYS.nume, nume);
-      sessionStorage.setItem(STORAGE_KEYS.email, email);
-    } catch {
-      /* sessionStorage may be unavailable in some privacy modes — silently skip */
-    }
+    setLeadCache({ nume, email });
     router.push("/offer-14-day");
   }
 
