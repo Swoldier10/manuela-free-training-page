@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Greeting } from "@/components/ui/Greeting";
 import { Logo } from "@/components/ui/Logo";
-import { TriggerEmail } from "@/components/ui/TriggerEmail";
+import { TriggerPlanUpdate } from "@/components/ui/TriggerPlanUpdate";
 import { Reveal } from "@/components/motion/Reveal";
 import { resolvePlan, type Plan } from "@/lib/plans";
 
@@ -27,7 +27,7 @@ export default async function ThankYouPage({
 
   return (
     <section className="relative flex min-h-screen flex-col overflow-hidden bg-olive-950 py-6 sm:py-8 lg:py-6">
-      <TriggerEmail plan={plan} />
+      <TriggerPlanUpdate plan={plan} />
       <header className="relative z-10 mx-auto flex w-full max-w-xl items-center gap-3 px-5 sm:px-8">
         <Logo size={64} />
         <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cream-100/70">

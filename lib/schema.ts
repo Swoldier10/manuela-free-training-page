@@ -15,8 +15,13 @@ export const subscribeSchema = z.object({
 
 export type SubscribeInput = z.infer<typeof subscribeSchema>;
 
-export const sendSchema = subscribeSchema.extend({
+// Inputs for the upstream POST /api/register-lead.
+export const registerLeadSchema = subscribeSchema;
+export type RegisterLeadInput = z.infer<typeof registerLeadSchema>;
+
+// Inputs for the upstream POST /api/update-lead. `nume` is carried only so
+// the server action can fall back to register-lead on a 404.
+export const updateLeadSchema = subscribeSchema.extend({
   plan: z.enum(["14-day", "7-day"]).nullable(),
 });
-
-export type SendInput = z.infer<typeof sendSchema>;
+export type UpdateLeadInput = z.infer<typeof updateLeadSchema>;

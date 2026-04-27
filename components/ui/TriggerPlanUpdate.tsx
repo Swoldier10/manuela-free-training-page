@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { sendThankYouEmail } from "@/app/thank-you/actions";
+import { updateLeadPlan } from "@/app/actions/leads";
 import type { Plan } from "@/lib/plans";
 import { STORAGE_KEYS } from "@/lib/storage";
 
 type Props = { plan: Plan | null };
 
-export function TriggerEmail({ plan }: Props) {
+export function TriggerPlanUpdate({ plan }: Props) {
   const fired = useRef(false);
 
   useEffect(() => {
@@ -25,9 +25,9 @@ export function TriggerEmail({ plan }: Props) {
 
     if (!nume || !email) return;
 
-    sendThankYouEmail({ nume, email, plan }).then((result) => {
+    updateLeadPlan({ nume, email, plan }).then((result) => {
       if (!result.ok) {
-        console.warn("[TriggerEmail] send failed:", result.error);
+        console.warn("[TriggerPlanUpdate] update failed:", result.error);
       }
     });
   }, [plan]);

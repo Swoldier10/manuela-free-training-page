@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { forwardRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import { registerLead } from "@/app/actions/leads";
 import { subscribeSchema, type SubscribeInput } from "@/lib/schema";
 import { STORAGE_KEYS } from "@/lib/storage";
 import { cn } from "@/lib/utils";
@@ -25,6 +26,7 @@ export function LeadForm({
 }: Props) {
   const router = useRouter();
   const [status, setStatus] = useState<"idle" | "loading">("idle");
+  const [serverError, setServerError] = useState<string | null>(null);
 
   const {
     register,
@@ -36,11 +38,23 @@ export function LeadForm({
     mode: "onBlur",
   });
 
-  function onSubmit(data: SubscribeInput) {
+  async function onSubmit(data: SubscribeInput) {
     setStatus("loading");
+    setServerError(null);
+
+    const nume = data.nume.trim();
+    const email = data.email.trim().toLowerCase();
+
+    const result = await registerLead({ nume, email });
+    if (!result.ok) {
+      setStatus("idle");
+      setServerError(result.error);
+      return;
+    }
+
     try {
-      sessionStorage.setItem(STORAGE_KEYS.nume, data.nume.trim());
-      sessionStorage.setItem(STORAGE_KEYS.email, data.email.trim().toLowerCase());
+      sessionStorage.setItem(STORAGE_KEYS.nume, nume);
+      sessionStorage.setItem(STORAGE_KEYS.email, email);
     } catch {
       /* sessionStorage may be unavailable in some privacy modes — silently skip */
     }
@@ -102,6 +116,15 @@ export function LeadForm({
             <ArrowRight className="size-4" aria-hidden="true" />
           </span>
         </CtaButton>
+
+        {serverError ? (
+          <p
+            role="alert"
+            className="text-center text-xs text-red-700"
+          >
+            {serverError}
+          </p>
+        ) : null}
 
         <p className="text-center text-[11px] leading-relaxed text-cream-100/55">
           🔒 Nu trimit spam. Primești doar antrenamente și informații utile.
