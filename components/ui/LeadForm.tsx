@@ -84,14 +84,14 @@ export function LeadForm({
 
       <div className={cn("space-y-4", !compact && "mt-6")}>
         <Field
-          label="Cum te pot striga?"
+          label="Numele tău"
           id="lead-nume"
           autoComplete="given-name"
           error={errors.nume?.message}
           {...register("nume")}
         />
         <Field
-          label="Adresa ta de email"
+          label="Adresa ta de email (principală)"
           id="lead-email"
           type="email"
           autoComplete="email"
@@ -122,7 +122,7 @@ export function LeadForm({
         ) : null}
 
         <p className="text-center text-[11px] leading-relaxed text-cream-100/55">
-          🔒 Nu trimit spam. Primești doar antrenamente și informații utile.
+          🔒 Nu trimit spam. Primești antrenamentele promise.
         </p>
       </div>
     </form>

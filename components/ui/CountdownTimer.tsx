@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
-const STORAGE_KEY = "mv_timer_deadline";
-const DURATION_MS = 30 * 60 * 1000;
+const STORAGE_KEY = "mv_timer_deadline_v2";
+const DURATION_MS = 15 * 60 * 1000;
 
 type Props = {
   className?: string;
@@ -45,7 +45,7 @@ export function CountdownTimer({ className }: Props) {
 
   return (
     <div
-      className={cn("flex items-end justify-center gap-3 sm:gap-5", className)}
+      className={cn("flex items-end justify-center gap-2 sm:gap-3", className)}
       aria-live="off"
       aria-label={
         ready
@@ -59,7 +59,7 @@ export function CountdownTimer({ className }: Props) {
       <span
         aria-hidden="true"
         className={cn(
-          "pb-8 font-display text-5xl leading-none text-gold-400 sm:pb-10 sm:text-7xl",
+          "pb-6 font-display text-3xl leading-none text-gold-400 sm:pb-7 sm:text-4xl",
           ready && !done && "animate-pulse-soft",
         )}
       >
@@ -81,25 +81,25 @@ function DigitBlock({ value, label, pulse }: DigitBlockProps) {
     <div className="flex flex-col items-center">
       <div
         className={cn(
-          "relative flex min-w-[104px] items-center justify-center rounded-2xl border border-gold-500/30 bg-olive-900/80 px-4 py-5 backdrop-blur",
-          "shadow-[0_30px_70px_-30px_rgba(168,131,37,0.4)]",
-          "sm:min-w-[148px] sm:rounded-3xl sm:px-6 sm:py-7",
+          "relative flex min-w-[68px] items-center justify-center rounded-xl border border-gold-500/30 bg-olive-900/80 px-3 py-3 backdrop-blur",
+          "shadow-[0_18px_40px_-22px_rgba(168,131,37,0.4)]",
+          "sm:min-w-[88px] sm:rounded-2xl sm:px-4 sm:py-4",
         )}
       >
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-6 top-1/2 h-px bg-cream-50/5"
+          className="pointer-events-none absolute inset-x-4 top-1/2 h-px bg-cream-50/5"
         />
         <span
           className={cn(
-            "font-display tabular text-[64px] leading-none text-cream-50 sm:text-[96px]",
+            "font-display tabular text-[36px] leading-none text-cream-50 sm:text-[52px]",
             pulse && "animate-pulse-soft",
           )}
         >
           {value}
         </span>
       </div>
-      <span className="mt-3 text-[10px] font-bold uppercase tracking-[0.3em] text-gold-400 sm:text-[11px]">
+      <span className="mt-2 text-[9px] font-bold uppercase tracking-[0.3em] text-gold-400 sm:text-[10px]">
         {label}
       </span>
     </div>

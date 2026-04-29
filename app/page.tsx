@@ -4,7 +4,6 @@ import { Benefits } from "@/components/sections/Benefits";
 import { WhatYouGet } from "@/components/sections/WhatYouGet";
 import { Differentiator } from "@/components/sections/Differentiator";
 import { MidCTA } from "@/components/sections/MidCTA";
-import { About } from "@/components/sections/About";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Footer } from "@/components/sections/Footer";
 
@@ -18,7 +17,6 @@ export default function HomePage() {
         <WhatYouGet />
         <Differentiator />
         <MidCTA />
-        <About />
         <FinalCTA />
       </main>
       <Footer />
