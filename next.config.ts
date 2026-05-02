@@ -7,11 +7,11 @@ import type { NextConfig } from "next";
 // a nonce-rotation setup.
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
+  "img-src 'self' data: blob: https://www.facebook.com",
   "font-src 'self' data:",
-  "connect-src 'self'",
+  "connect-src 'self' https://www.facebook.com https://connect.facebook.net",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",

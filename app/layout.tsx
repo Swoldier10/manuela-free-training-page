@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter, Playfair_Display, Sacramento } from "next/font/google";
+import MetaPixel from "@/components/analytics/MetaPixel";
 import "./globals.css";
 
 const inter = Inter({
@@ -89,6 +90,7 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} ${sacramento.variable} ${fraunces.variable} antialiased`}
     >
       <body className="min-h-screen bg-olive-950 text-cream-50 flex flex-col">
+        <MetaPixel />
         {children}
       </body>
     </html>
