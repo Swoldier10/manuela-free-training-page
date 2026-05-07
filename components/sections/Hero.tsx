@@ -53,7 +53,7 @@ export function Hero() {
           </p>
           <div className="mt-3 flex items-baseline justify-center gap-3 sm:gap-4">
             <span className="relative font-display text-[34px] leading-none text-cream-100/70 sm:text-[42px]">
-              69 RON
+              100 RON
               <span
                 aria-hidden="true"
                 className="absolute left-[-6%] right-[-6%] top-1/2 h-[2px] -translate-y-1/2 -rotate-6 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.6)] sm:h-[3px]"

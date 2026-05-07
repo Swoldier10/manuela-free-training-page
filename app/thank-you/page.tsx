@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Greeting } from "@/components/ui/Greeting";
-import { Logo } from "@/components/ui/Logo";
-import { TriggerPlanUpdate } from "@/components/ui/TriggerPlanUpdate";
+import { TriggerSendRecipes } from "@/components/ui/TriggerSendRecipes";
 import { Reveal } from "@/components/motion/Reveal";
 import { resolvePlan, type Plan } from "@/lib/plans";
 
@@ -27,14 +26,7 @@ export default async function ThankYouPage({
 
   return (
     <section className="relative flex min-h-screen flex-col overflow-hidden bg-olive-950 py-6 sm:py-8 lg:py-6">
-      <TriggerPlanUpdate plan={plan} />
-      <header className="relative z-10 mx-auto flex w-full max-w-xl items-center gap-3 px-5 sm:px-8">
-        <Logo size={64} />
-        <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cream-100/70">
-          Manuela Vlașin · Personal Trainer
-        </p>
-      </header>
-
+      {plan && <TriggerSendRecipes />}
       <div className="relative z-10 mx-auto flex w-full max-w-xl flex-col items-center px-5 pt-12 pb-10 text-center sm:px-8 sm:pt-16 sm:pb-12">
         <Reveal>
           <Greeting />
@@ -58,7 +50,7 @@ export default async function ThankYouPage({
 }
 
 function CaseBody({ plan }: { plan: Plan | null }) {
-  if (plan === "14-day") {
+  if (plan) {
     return (
       <>
         <h1 className="mt-5 font-display text-[32px] leading-[1.1] text-cream-50 sm:text-[44px]">
@@ -70,29 +62,7 @@ function CaseBody({ plan }: { plan: Plan | null }) {
         <BulletList
           items={[
             "Antrenamentele pentru abdomen și fesieri",
-            "Planul de nutriție pe 14 zile",
-          ]}
-        />
-        <p className="mx-auto mt-7 max-w-md text-[15px] leading-[1.6] text-cream-100/75 sm:text-base">
-          Ți-am trimis toate detaliile pe email. {INBOX_NOTE}
-        </p>
-      </>
-    );
-  }
-
-  if (plan === "7-day") {
-    return (
-      <>
-        <h1 className="mt-5 font-display text-[32px] leading-[1.1] text-cream-50 sm:text-[44px]">
-          Bună alegere — începi simplu 👌
-        </h1>
-        <p className="mx-auto mt-6 max-w-md text-[16px] leading-[1.6] text-cream-100/85 sm:text-[17px]">
-          Ai acces acum la:
-        </p>
-        <BulletList
-          items={[
-            "Antrenamentele pentru abdomen și fesieri",
-            "Planul de nutriție pe 7 zile",
+            "95 de rețete sănătoase, simple și nutritive",
           ]}
         />
         <p className="mx-auto mt-7 max-w-md text-[15px] leading-[1.6] text-cream-100/75 sm:text-base">

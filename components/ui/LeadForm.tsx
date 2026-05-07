@@ -53,7 +53,7 @@ export function LeadForm({
     }
 
     setLeadCache({ nume, email });
-    router.push("/offer-14-day");
+    router.push("/upsell");
   }
 
   const wrapperBase =
@@ -84,7 +84,7 @@ export function LeadForm({
 
       <div className={cn("space-y-4", !compact && "mt-6")}>
         <Field
-          label="Numele tău"
+          label="Prenumele tău"
           id="lead-nume"
           autoComplete="given-name"
           error={errors.nume?.message}

@@ -7,6 +7,10 @@ const LEAD_CACHE_TTL_MS = 4 * 60 * 60 * 1000; // 4 hours
 export const STORAGE_KEYS = {
   /** localStorage — JSON blob: { nume, email, expiresAt }. */
   lead: "mv:lead",
+  /** localStorage — JSON blob: { [emailLowercased]: true }. Tracks which
+   *  emails have already received the recipes dispatch from /thank-you so
+   *  the trigger fires at most once per email per browser. */
+  recipesSent: "mv:recipes-sent",
 } as const;
 
 type LeadCache = { nume: string; email: string; expiresAt: number };
@@ -57,4 +61,34 @@ export function getLeadCache(): { nume: string; email: string } | null {
   } catch {
     return null;
   }
+}
+
+function readRecipesSentMap(): Record<string, true> {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEYS.recipesSent);
+    if (!raw) return {};
+    const parsed: unknown = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      return {};
+    }
+    return parsed as Record<string, true>;
+  } catch {
+    return {};
+  }
+}
+
+export function markRecipesSent(email: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    const map = readRecipesSentMap();
+    map[email.toLowerCase()] = true;
+    window.localStorage.setItem(STORAGE_KEYS.recipesSent, JSON.stringify(map));
+  } catch {
+    /* private mode / quota — silently skip */
+  }
+}
+
+export function wasRecipesSent(email: string): boolean {
+  return Boolean(readRecipesSentMap()[email.toLowerCase()]);
 }
