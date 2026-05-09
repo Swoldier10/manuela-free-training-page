@@ -24,6 +24,13 @@ const schema = z.object({
   PLAN_DOWNSELL_ID: z
     .string()
     .min(8, "PLAN_DOWNSELL_ID must be a non-trivial opaque ID."),
+  // Optional: when set, server-side Conversions API events fire alongside
+  // Pixel events for browser+server deduplication. Missing = Pixel-only
+  // mode (CAPI helper logs and no-ops; user-facing flows are unaffected).
+  META_CAPI_ACCESS_TOKEN: z.string().min(20).optional(),
+  // Optional: route CAPI events to the "Test Events" tab in Events Manager
+  // instead of production attribution. Unset in production.
+  META_CAPI_TEST_EVENT_CODE: z.string().min(1).optional(),
 });
 
 type Env = z.infer<typeof schema>;

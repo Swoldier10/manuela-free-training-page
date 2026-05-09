@@ -2,9 +2,22 @@
 
 import { useEffect, useRef } from "react";
 import { sendRecipesEmail } from "@/app/actions/leads";
-import { getLeadCache, markRecipesSent, wasRecipesSent } from "@/lib/storage";
+import { PLAN_VALUE } from "@/lib/meta";
+import type { Plan } from "@/lib/plans";
+import {
+  getLeadCache,
+  markPurchaseSent,
+  markRecipesSent,
+  wasPurchaseSent,
+  wasRecipesSent,
+} from "@/lib/storage";
+import { trackEvent } from "@/lib/track";
 
-export function TriggerSendRecipes() {
+type Props = {
+  plan: Plan;
+};
+
+export function TriggerSendRecipes({ plan }: Props) {
   const fired = useRef(false);
 
   useEffect(() => {
@@ -13,6 +26,17 @@ export function TriggerSendRecipes() {
 
     const cached = getLeadCache();
     if (!cached) return;
+
+    if (!wasPurchaseSent(cached.email)) {
+      trackEvent({
+        event: "Purchase",
+        value: PLAN_VALUE[plan],
+        contentName: plan === "upsell" ? "Upsell 49" : "Downsell 39",
+        lead: { nume: cached.nume, email: cached.email },
+      });
+      markPurchaseSent(cached.email);
+    }
+
     if (wasRecipesSent(cached.email)) return;
 
     sendRecipesEmail({ nume: cached.nume, email: cached.email }).then(
@@ -24,7 +48,7 @@ export function TriggerSendRecipes() {
         }
       },
     );
-  }, []);
+  }, [plan]);
 
   return null;
 }

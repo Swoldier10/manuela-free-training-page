@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { CheckoutLinkButton } from "@/components/analytics/CheckoutLinkButton";
+import { ViewContentTracker } from "@/components/analytics/ViewContentTracker";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { Stripes, Tally } from "@/components/ui/Decor";
 import { Greeting } from "@/components/ui/Greeting";
@@ -29,6 +31,7 @@ export default function DownsellPage() {
       aria-labelledby="downsell-title"
       className="relative min-h-screen overflow-hidden bg-olive-950 py-10 sm:py-14 lg:py-12"
     >
+      <ViewContentTracker plan="downsell" />
       <Stripes className="pointer-events-none absolute -right-28 -top-20 w-[24rem] text-olive-800" />
       <Stripes className="pointer-events-none absolute -left-32 -bottom-16 w-[22rem] rotate-180 text-olive-800" />
       <Tally className="pointer-events-none absolute right-10 top-32 hidden w-14 text-cream-50/15 md:block" />
@@ -115,14 +118,18 @@ export default function DownsellPage() {
 
           <Reveal delay={0.2} className="lg:col-start-2 lg:row-start-5">
             <div className="flex flex-col items-center lg:items-start">
-              <a href={DOWNSELL_CHECKOUT_URL} className="block w-full sm:w-auto">
+              <CheckoutLinkButton
+                url={DOWNSELL_CHECKOUT_URL}
+                plan="downsell"
+                className="block w-full sm:w-auto"
+              >
                 <CtaButton variant="primary" size="lg" className="w-full sm:w-auto">
                   <span className="flex items-center gap-2">
                     Vreau rețetele acum
                     <ArrowRight className="size-4" aria-hidden="true" />
                   </span>
                 </CtaButton>
-              </a>
+              </CheckoutLinkButton>
               <Link
                 href="/thank-you"
                 className="mt-4 inline-block max-w-xs text-center text-[11px] font-medium uppercase tracking-[0.18em] text-cream-100/55 underline underline-offset-4 transition-colors hover:text-gold-400 sm:text-[12px] lg:max-w-none lg:text-left"

@@ -1,7 +1,7 @@
 "use server";
 
-import { headers } from "next/headers";
 import { env } from "@/lib/env";
+import { clientIp } from "@/lib/clientIp";
 import { rateLimit } from "@/lib/rateLimit";
 import { registerLeadSchema, sendRecipesSchema } from "@/lib/schema";
 
@@ -10,13 +10,6 @@ type Result = { ok: true } | { ok: false; error: string };
 const GENERIC_ERROR = "A apărut o problemă. Încearcă din nou, te rog.";
 const RATE_LIMIT_ERROR =
   "Prea multe încercări. Mai așteaptă câteva minute și încearcă din nou.";
-
-async function clientIp(): Promise<string> {
-  const h = await headers();
-  const fwd = h.get("x-forwarded-for");
-  if (fwd) return fwd.split(",")[0]!.trim();
-  return h.get("x-real-ip") ?? "anonymous";
-}
 
 export async function registerLead(input: {
   nume: string;

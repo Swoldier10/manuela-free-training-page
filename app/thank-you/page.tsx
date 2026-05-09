@@ -26,7 +26,7 @@ export default async function ThankYouPage({
 
   return (
     <section className="relative flex min-h-screen flex-col overflow-hidden bg-olive-950 py-6 sm:py-8 lg:py-6">
-      {plan && <TriggerSendRecipes />}
+      {plan && <TriggerSendRecipes plan={plan} />}
       <div className="relative z-10 mx-auto flex w-full max-w-xl flex-col items-center px-5 pt-12 pb-10 text-center sm:px-8 sm:pt-16 sm:pb-12">
         <Reveal>
           <Greeting />
