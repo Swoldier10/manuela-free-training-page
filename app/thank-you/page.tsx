@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Greeting } from "@/components/ui/Greeting";
+import { TriggerLead } from "@/components/ui/TriggerLead";
 import { TriggerSendRecipes } from "@/components/ui/TriggerSendRecipes";
 import { Reveal } from "@/components/motion/Reveal";
 import { resolvePlan, type Plan } from "@/lib/plans";
@@ -26,7 +27,7 @@ export default async function ThankYouPage({
 
   return (
     <section className="relative flex min-h-screen flex-col overflow-hidden bg-olive-950 py-6 sm:py-8 lg:py-6">
-      {plan && <TriggerSendRecipes plan={plan} />}
+      {plan ? <TriggerSendRecipes plan={plan} /> : <TriggerLead />}
       <div className="relative z-10 mx-auto flex w-full max-w-xl flex-col items-center px-5 pt-12 pb-10 text-center sm:px-8 sm:pt-16 sm:pb-12">
         <Reveal>
           <Greeting />

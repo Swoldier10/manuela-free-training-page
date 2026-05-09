@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import { registerLead } from "@/app/actions/leads";
 import { subscribeSchema, type SubscribeInput } from "@/lib/schema";
 import { setLeadCache } from "@/lib/storage";
-import { trackEvent } from "@/lib/track";
 import { cn } from "@/lib/utils";
 import { CtaButton } from "./CtaButton";
 
@@ -54,7 +53,6 @@ export function LeadForm({
     }
 
     setLeadCache({ nume, email });
-    trackEvent({ event: "Lead", lead: { nume, email } });
     router.push("/upsell");
   }
 

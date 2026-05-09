@@ -15,6 +15,10 @@ export const STORAGE_KEYS = {
    *  emails already had a Meta Pixel/CAPI Purchase event fired from
    *  /thank-you so refreshes don't double-fire. */
   purchaseSent: "mv:purchase-sent",
+  /** localStorage — JSON blob: { [emailLowercased]: true }. Tracks which
+   *  emails already had a Meta Pixel/CAPI Lead event fired from the free
+   *  /thank-you path so refreshes / re-visits don't double-fire. */
+  leadSent: "mv:lead-sent",
 } as const;
 
 type LeadCache = { nume: string; email: string; expiresAt: number };
@@ -128,4 +132,34 @@ export function markPurchaseSent(email: string): void {
 
 export function wasPurchaseSent(email: string): boolean {
   return Boolean(readPurchaseSentMap()[email.toLowerCase()]);
+}
+
+function readLeadSentMap(): Record<string, true> {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEYS.leadSent);
+    if (!raw) return {};
+    const parsed: unknown = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      return {};
+    }
+    return parsed as Record<string, true>;
+  } catch {
+    return {};
+  }
+}
+
+export function markLeadSent(email: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    const map = readLeadSentMap();
+    map[email.toLowerCase()] = true;
+    window.localStorage.setItem(STORAGE_KEYS.leadSent, JSON.stringify(map));
+  } catch {
+    /* private mode / quota — silently skip */
+  }
+}
+
+export function wasLeadSent(email: string): boolean {
+  return Boolean(readLeadSentMap()[email.toLowerCase()]);
 }
