@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/sections/Footer";
 import { Hero } from "./_components/Hero";
-import { PainPoints } from "./_components/PainPoints";
-import { NeedStructure } from "./_components/NeedStructure";
-import { WhatIsProgram } from "./_components/WhatIsProgram";
-import { Results } from "./_components/Results";
-import { CommonMistakes } from "./_components/CommonMistakes";
-import { WhatYouGet } from "./_components/WhatYouGet";
+import { WhyItWorks } from "./_components/WhyItWorks";
 import { ForWhom } from "./_components/ForWhom";
-import { Differentiators } from "./_components/Differentiators";
-import { LifeAfter } from "./_components/LifeAfter";
-import { Guarantee } from "./_components/Guarantee";
+import { Process } from "./_components/Process";
 import { FinalCTA } from "./_components/FinalCTA";
+import { MobileCtaBar } from "./_components/MobileCtaBar";
 
 export const metadata: Metadata = {
   title: "Fit&Feminine — Programul 1:1 de 12 săptămâni",
@@ -37,21 +31,15 @@ export const metadata: Metadata = {
 export default function FitFemininePage() {
   return (
     <>
-      <main className="flex-1">
+      <main className="flex-1 pb-24 md:pb-0">
         <Hero />
-        <PainPoints />
-        <NeedStructure />
-        <WhatIsProgram />
-        <Results />
-        <CommonMistakes />
-        <WhatYouGet />
+        <WhyItWorks />
         <ForWhom />
-        <Differentiators />
-        <LifeAfter />
-        <Guarantee />
+        <Process />
         <FinalCTA />
       </main>
       <Footer />
+      <MobileCtaBar />
     </>
   );
 }
